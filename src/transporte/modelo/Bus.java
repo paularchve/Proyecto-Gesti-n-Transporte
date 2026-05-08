@@ -34,10 +34,10 @@ public class Bus implements Serializable {
     // ================= VALIDACIÓN =================
     private void validarDatos(String patente, int capacidad) throws DatosInvalidosException {
         if (patente == null || patente.trim().isEmpty()) {
-            throw new DatosInvalidosException("La patente no puede estar vacía");
+            throw new DatosInvalidosException("La patente no puede estar vacía: " + patente);
         }
         if (capacidad <= 0 || capacidad > 100) {
-            throw new DatosInvalidosException("Capacidad inválida (1-100)");
+            throw new DatosInvalidosException("Capacidad inválida (1-100): " + capacidad);
         }
     }
 
@@ -66,7 +66,7 @@ public class Bus implements Serializable {
     // ================= LÓGICA =================
     public void agregarPasajero(Pasajero p) throws BusLlenoException {
         if (pasajeros.size() >= capacidad) {
-            throw new BusLlenoException("El bus está lleno");
+            throw new BusLlenoException("El bus con patente " + patente + " está lleno. Capacidad: " + capacidad);
         }
         pasajeros.add(p);
     }
