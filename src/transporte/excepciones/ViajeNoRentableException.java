@@ -1,7 +1,6 @@
 package transporte.excepciones;
 
-// Excepción personalizada para indicar que un viaje no es rentable
-public class ViajeNoRentableException extends Exception {
+public class ViajeNoRentableException extends TransporteException {
 
     public ViajeNoRentableException() {
         super("El viaje no es rentable");
