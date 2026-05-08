@@ -91,7 +91,12 @@ public class Viaje implements Serializable {
 
     // agregar pasajero objeto
     public void agregarPasajero(Pasajero p) throws BusLlenoException {
-        bus.agregarPasajero(p); // primero validar capacidad
+        try {
+            bus.agregarPasajero(p); // primero validar capacidad
+        } catch (BusLlenoException e) {
+            throw new BusLlenoException("No se pudo agregar el pasajero " + p.getNombre() +
+                " al viaje con destino a " + destino + ". " + e.getMessage());
+        }
         pasajeros.add(p);
     }
 
@@ -110,7 +115,7 @@ public class Viaje implements Serializable {
     public void verificarRentabilidad() throws ViajeNoRentableException {
         if (!esRentable()) {
             throw new ViajeNoRentableException(
-                "Viaje no rentable. Ingresos: " + calcularIngresos() +
+                "Viaje no rentable. Destino: " + destino + ", Ingresos: " + calcularIngresos() +
                 " | Costo: " + costoViaje
             );
         }
