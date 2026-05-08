@@ -1,7 +1,6 @@
 package transporte.excepciones;
 
-// Excepción personalizada para indicar que un bus no fue encontrado
-public class BusNoEncontradoException extends Exception {
+public class BusNoEncontradoException extends TransporteException {
 
     public BusNoEncontradoException() {
         super("El bus no fue encontrado en el sistema");
